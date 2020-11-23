@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Core {
-    public static final int quantSize = 50;
+    public static final int QUANT_SIZE = 50;
     private static Random rnd = new Random();
     ProcessBlocking blocking;
     private ArrayList<Process> processes;
@@ -52,11 +52,11 @@ public class Core {
 
     public void planProcesses() {
         System.out.println("No blocking integrated ");
-        System.out.println(quantSize);
+        System.out.println(QUANT_SIZE);
 
         while (processes.size() > 0) {
             for (int i = 0; i < processes.size(); i++) {
-                int currentQuant = quantSize;
+                int currentQuant = QUANT_SIZE;
 
                 Process currentProc = processes.get(i);
 

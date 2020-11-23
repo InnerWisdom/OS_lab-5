@@ -1,11 +1,8 @@
 import java.util.ArrayList;
 
 public class ProcessBlocking {
-
-
     protected int requiredTimeWithBlocking;
     private ArrayList<Process> processesClone;
-
     public ProcessBlocking(ArrayList<Process> processesClone) {
         this.processesClone = processesClone;
     }
@@ -21,7 +18,7 @@ public class ProcessBlocking {
 
     public void planProcessesBlocking() {
         System.out.println("Blocking integrated");
-        System.out.println(Core.quantSize);
+        System.out.println(Core.QUANT_SIZE);
         ArrayList<Process> blockedProcesses = new ArrayList<Process>();
 
         while (processesClone.size() > 0) {
@@ -39,14 +36,14 @@ public class ProcessBlocking {
                     continue;
                 }
 
-                int currentQuant = Core.quantSize;
+                int currentQuant = Core.QUANT_SIZE;
 
                 int threadExecutionTime = currentProc.run(currentQuant);
                 requiredTimeWithBlocking += threadExecutionTime;
                 currentQuant -= threadExecutionTime;
 
                 for (Process proc : blockedProcesses) {
-                    proc.awaitIO(Core.quantSize);
+                    proc.awaitIO(Core.QUANT_SIZE);
                 }
 
                 blockedProcesses.removeIf(proc -> !proc.isAwaitingIO());

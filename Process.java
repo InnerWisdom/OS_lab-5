@@ -1,12 +1,12 @@
 import java.util.Random;
 
 public class Process {
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     //time boundaries
-    private static final int minExecutionTime = 50;
-    private static final int maxExecutionTime = 250;
-    private static final int minIOTime = 25;
-    private static final int maxIOTime = 300;
+    private static final int MIN_EXEC = 50;
+    private static final int MAX_EXEC = 250;
+    private static final int MIN_IO = 25;
+    private static final int MAX_IO = 300;
 
     //non-final integers
     private int processID;
@@ -21,9 +21,9 @@ public class Process {
 
     public Process(int processID, boolean ioThread) {
         this.processID = processID;
-        this.executionTime = random.nextInt(maxExecutionTime - minExecutionTime);
+        this.executionTime = RANDOM.nextInt(MAX_EXEC - MIN_EXEC);
         if (ioThread) {
-            this.ioTime = random.nextInt(maxIOTime - minIOTime);
+            this.ioTime = RANDOM.nextInt(MAX_IO - MIN_IO);
         } else {
             this.ioTime = 0;
         }
